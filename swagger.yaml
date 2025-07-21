@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: API de Clientes
+  description: API para gerenciar clientes.
+  version: 1.0.0
+
+paths:
+  # Categoria: Clientes
+  /api/costumers:
+    post:
+      summary: Cadastrar cliente
+      description: Cria um novo cliente no sistema.
+      tags:
+        - Clientes
+      requestBody:
+        description: Dados do cliente para criação
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - cpf
+                - name
+                - email
+              properties:
+                cpf:
+                  type: string
+                name:
+                  type: string
+                email:
+                  type: string
+      responses:
+        '201':
+          description: Cliente criado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  cpf:
+                    type: string
+                  name:
+                    type: string
+                  email:
+                    type: string
+        '400':
+          description: Dados inválidos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '500':
+          description: Erro interno do servidor
+
+  /api/costumers/{cpf}:
+    get:
+      summary: Buscar cliente por CPF
+      description: Retorna os dados de um cliente pelo CPF.
+      tags:
+        - Clientes
+      parameters:
+        - in: path
+          name: cpf
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cliente encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  cpf:
+                    type: string
+                  name:
+                    type: string
+                  email:
+                    type: string
+        '400':
+          description: Dados inválidos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '500':
+          description: Erro interno do servidor
