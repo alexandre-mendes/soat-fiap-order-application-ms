@@ -4,7 +4,7 @@ dotenv.config();
 import express from 'express';
 import cors from "cors";
 import swaggerRouter from './api/swagger';
-import costumerRouter from './api/costumerRouter';
+import orderRouter from './api/orderRouter';
 import { NextFunction, Request, Response } from 'express';
 import { DomainError } from '../domain/error/DomainError';
 
@@ -14,7 +14,7 @@ app.use(cors({
     origin: 'http://localhost:3000'
 }));
 
-app.use(costumerRouter)
+app.use(orderRouter)
 app.use(swaggerRouter);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {

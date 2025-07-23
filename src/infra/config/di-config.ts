@@ -16,12 +16,17 @@ import { OrderController } from "../api/controller/OrderController";
 import { DefaultCostumerGateway } from "../client/DefaultCostumerGateway";
 import { DefaultMercadoPagoGateway } from "../client/DefaultMercadoPagoGateway";
 import { DefaultProductGateway } from "../client/DefaultProductGateway";
+import { AxiosHttpClient } from "../client/httpclient/AxiosHttpClient";
 import { DefaultOrderRepository } from "../database/DefaultOrderRepository";
 import { DynamoDb } from "../database/dynamo/DynamoConfig";
 import { IDatabase } from "../database/dynamo/IDatabase";
 import { IOrder, OrderDynamoDatabase } from "../database/dynamo/OrderDynamoDatabase";
 
-
+/*
+    Http Client
+*/
+const costumerHttpClient = new AxiosHttpClient(process.env.COSTUMER_BASE_URL || '');
+const productHttpClient = new AxiosHttpClient(process.env.PRODUCT_BASE_URL || '')
 
 /*
     Dynamo
@@ -41,8 +46,8 @@ const orderRepository: OrderRepository = new DefaultOrderRepository(orderDatabas
 /*
     Gateway
 */
-const costumerGateway: CostumerGateway = new DefaultCostumerGateway();
-const productGateway: ProductGateway = new DefaultProductGateway();
+const costumerGateway: CostumerGateway = new DefaultCostumerGateway(costumerHttpClient);
+const productGateway: ProductGateway = new DefaultProductGateway(productHttpClient);
 const mercadoPagoGateway: MercadoPagoGateway = new DefaultMercadoPagoGateway();
 
 /*
