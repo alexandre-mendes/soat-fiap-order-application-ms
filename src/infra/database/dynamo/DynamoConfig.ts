@@ -33,7 +33,7 @@ export class DynamoDb {
     this.ddbClient = new DynamoDBClient(config || {});
     this.client = DynamoDBDocumentClient.from(this.ddbClient);
 
-    this.createTableIfNotExists('costumer').then(() => console.log('Tabela criada com sucesso.'))
+    this.createTableIfNotExists('order').then(() => console.log('Tabela criada com sucesso.'))
 
   }
 

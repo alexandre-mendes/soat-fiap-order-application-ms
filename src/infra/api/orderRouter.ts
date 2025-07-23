@@ -1,4 +1,4 @@
-import { NextFunction, Router } from 'express';
+import { Router } from 'express';
 import { orderController } from '../config/di-config';
 import { errorHandler } from './errorHandler';
 
