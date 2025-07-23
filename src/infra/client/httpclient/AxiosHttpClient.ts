@@ -28,7 +28,8 @@ export class AxiosHttpClient implements HttpClient {
     }
 
     async get<T>(path: string, headers?: any): Promise<T> {
-        return this.api.get(path, { headers });
+        const response = await this.api.get(path, { headers });
+        return response.data
     }
 
 }
