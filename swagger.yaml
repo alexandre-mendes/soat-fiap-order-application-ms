@@ -6,7 +6,7 @@ info:
 
 paths:
   # Categoria: Pedidos
-  /orders/checkout:
+  /api/orders/checkout:
     post:
       summary: Criar pedido
       description: Cria um novo pedido no sistema.
@@ -64,7 +64,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /orders:
+  /api/orders:
     get:
       summary: Listar pedidos por status
       description: Retorna uma lista de pedidos agrupados por status.
@@ -154,7 +154,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /orders/{id}/progress:
+  /api/orders/{id}/progress:
     put:
       summary: Atualizar o status do pedido
       description: Atualiza o status do pedido com base no status atual. O status evolui automaticamente de acordo com o fluxo de progresso do pedido.
@@ -202,7 +202,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /orders/{id}/payment:
+  /api/orders/{id}/payment:
     put:
       summary: Atualizar o status de pagamento de um pedido
       description: Este endpoint é usado para aprovar ou reprovar o pagamento de um pedido via web hook.
@@ -238,7 +238,7 @@ paths:
         '500':
           description: Erro interno do servidor
 
-  /orders/{id}/payment-info:
+  /api/orders/{id}/payment-info:
     get:
       summary: Consultar status de pagamento de um pedido
       description: Este endpoint retorna o status de pagamento de um pedido.
