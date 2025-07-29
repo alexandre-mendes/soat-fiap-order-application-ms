@@ -56,6 +56,16 @@ spec:
                 configMapKeyRef:
                   name: soat-fiap-order-application-ms-configmap
                   key: AWS_REGION
+            - name: COSTUMER_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: soat-fiap-order-application-ms-configmap
+                  key: COSTUMER_BASE_URL
+            - name: PRODUCT_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: soat-fiap-order-application-ms-configmap
+                  key: PRODUCT_BASE_URL
           resources:
             requests:
               memory: "62Mi"
