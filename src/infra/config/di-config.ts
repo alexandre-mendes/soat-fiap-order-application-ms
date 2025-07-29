@@ -48,15 +48,16 @@ const orderRepository: OrderRepository = new DefaultOrderRepository(orderDatabas
 */
 const costumerGateway: CostumerGateway = new DefaultCostumerGateway(costumerHttpClient);
 const productGateway: ProductGateway = new DefaultProductGateway(productHttpClient);
-const mercadoPagoGateway: MercadoPagoGateway = new DefaultMercadoPagoGateway();
+
 
 /*
     Use Cases
 */
+const paymentOrderUpdateUseCase: PaymentOrderUpdateUseCase = new DefaultPaymentOrderUpdateUseCase(orderRepository);
+const mercadoPagoGateway: MercadoPagoGateway = new DefaultMercadoPagoGateway(paymentOrderUpdateUseCase);
 const checkoutOrderUseCase: CheckoutOrderUseCase = new DefaultCheckoutOrderUseCase(orderRepository, costumerGateway, productGateway, mercadoPagoGateway);
 const findAllOrdersUseCase: FindAllOrdersUseCase = new DefaultFindAllOrdersUseCase(orderRepository);
 const paymentInfoUseCase: PaymentInfoUseCase = new DefaultPaymentInfoUseCase(orderRepository);
-const paymentOrderUpdateUseCase: PaymentOrderUpdateUseCase = new DefaultPaymentOrderUpdateUseCase(orderRepository);
 const progressOrderUseCase: ProgressOrderUseCase = new DefaultProgressOrderUseCase(orderRepository);
 
 /*

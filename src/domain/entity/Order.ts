@@ -23,7 +23,7 @@ export class Order {
     private _createdAt: Date;
 
     constructor(client: CostumerVO | undefined, items: OrderItem[]) {
-        if (!items)
+        if (!items || items.length === 0)
             throw new DomainError('O pedido não pode ser finalizado sem itens.');
 
         this._number = Order.generateOrderNumber();
