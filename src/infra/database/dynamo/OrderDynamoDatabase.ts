@@ -5,9 +5,9 @@ import { DBOperation, DBQuery, IDatabase } from "./IDatabase";
 export interface IOrder {
     id: string | undefined;
     number: number;
-    client: { id: string, name: string, email: string, cpf: string } | undefined;
+    client: { id: string, name: string } | undefined;
     items: {
-        product: { id: string, name: string, description: string, price: number, category: string },
+        product: { id: string, name: string, price: number },
         quantity: number,
         observation: string
     }[];
