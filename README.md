@@ -128,6 +128,10 @@ A aplicação ficará acessível via:
 │   └── /database         # Implementação dos repositorios
 │   └── /client           # Implementação dos gateways
 ```
+---
+
+## Cobertura
+![alt text](image.png)
 
 ---
 
